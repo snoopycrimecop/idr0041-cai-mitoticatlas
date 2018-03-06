@@ -17,9 +17,9 @@ for assay in assays:
     cells = [x for x in glob(assay + "/*") if not x.endswith("Calibration")]
     for cell in cells:
         rawtifs = sorted([x for x in glob(cell + "/rawtif/*")
-            if not x.endswith("Thumbs.db")])
+                          if not x.endswith("Thumbs.db")])
         conctifs = sorted([x for x in glob(cell + "/conctif/*")
-            if not x.endswith("Thumbs.db")])
+                           if not x.endswith("Thumbs.db")])
         raw_pattern = join(cell, "rawtif",
             basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
         assert list(FilePattern(raw_pattern).filenames()) == rawtifs
