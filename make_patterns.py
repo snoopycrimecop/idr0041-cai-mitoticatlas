@@ -22,7 +22,8 @@ for assay in assays:
             basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
         assert list(FilePattern(raw_pattern).filenames()) == rawtifs
 
-        pattern_file =  join(patterns, basename(assay), cell, "rawtif.pattern")
+        pattern_file =  join(patterns, basename(assay), basename(cell),
+            "rawtif.pattern")
         with open(pattern_file, 'w') as f:
             print "Writing %s" % pattern_file
             # f.write(raw_pattern)
