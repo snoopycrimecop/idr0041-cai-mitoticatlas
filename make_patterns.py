@@ -25,7 +25,7 @@ for assay in assays:
         assert list(FilePattern(raw_pattern).filenames()) == rawtifs
         conc_pattern = join(cell, "conctif",
             basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
-        assert list(FilePattern(raw_pattern).filenames()) == conctifs
+        assert list(FilePattern(conc_pattern).filenames()) == conctifs
 
         pattern_dir = join(patterns_base, basename(assay), basename(cell))
         if not os.path.exists(pattern_dir):
