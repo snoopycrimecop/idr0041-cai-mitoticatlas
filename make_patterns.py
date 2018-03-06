@@ -7,6 +7,7 @@ from pyidr.file_pattern import FilePattern
 
 TIMEPOINTS = 40
 BASE_DIRECTORY = "/uod/idr/filesets/idr0041-cai-mitoticatlas/"
+LIMIT = 2
 
 # Determine base location for pattern files
 patterns_base = join(os.path.dirname(os.path.realpath(__file__)), "patterns")
@@ -15,8 +16,8 @@ print "Creating patterns from %s, saving under %s" % (
 
 # List all assay folders under base directory
 assays = [join(BASE_DIRECTORY, x) for x in os.listdir(BASE_DIRECTORY)]
-assays = filter(os.path.isdir, assays)
-for assay in assays:
+assays = sorted(filter(os.path.isdir, assays))
+for assay in assays[:LIMIT]:
     # Retrieve individual cell per assays excluding calibration folders
     cells = [x for x in glob(assay + "/*") if not x.endswith("Calibration")]
     for cell in cells:
