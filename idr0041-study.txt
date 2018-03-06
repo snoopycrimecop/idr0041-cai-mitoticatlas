@@ -1,0 +1,159 @@
+# FILL IN AS MUCH INFORMATION AS YOU CAN.  HINTS HAVE BEEN PUT IN SOME FIELDS AFTER THE HASH # SYMBOL. REPLACE THE HINT WITH TEXT WHERE APPROPRIATE.
+
+# STUDY DESCRIPTION SECTION
+
+"# Section with generic information about the study including title, description, publication details (if applicable) and contact details"
+
+Comment[IDR Study Accession]	# leave blank
+
+Study Title	An experimental and computational framework to build a dynamic protein atlas of human cell division
+
+Study Type	Quantitative protein localization using FCS-calibrated 3D time-lapse imaging
+
+Study Type Term Source REF	# leave blank
+
+Study Type Term Accession	# leave blank
+
+Study Description	Using the cell and nuclear boundaries as landmarks, we generated a 4D image data-driven, canonical model of a human mitotic cell. This model is used to integrate the dynamic distribution of 3D concentration data for many mitotic proteins imaged by calibrated fluorescence microscopy in a large number of dividing cells. Analysis of the data allows to automatically identify sub-cellular structures and quantify the timing and magnitude of protein fluxes between structures, as well as predicting dynamic multi-molecular biological processes such as organelle assembly and disassembly. The integrated experimental and computational method enables building a 4D protein atlas of the dividing human cell.
+
+Study Organism	 Homo sapiens
+
+Study Organism Term Source REF	NCBITaxon
+
+Study Organism Term Accession	# leave blank
+
+Study Experiments Number	1
+
+Study External URL	http://www.mitocheck.org/mitotic_cell_atlas
+
+Study Public Release Date	Immediate
+
+Study PubMed ID	# fill in if known
+
+Study Publication Title	An experimental and computational framework to build a dynamic protein atlas of human cell division
+
+Study Author List	Yin Cai, M. Julius Hossain, Jean-Karim Hériché, Antonio Z. Politi, Nike Walther, Birgit Koch, Malte Wachsmuth, Bianca Nijmeijer, Moritz Kueblbeck, Marina Martinic Kavur, Rene Ladurner, Jan-Michael Peters & Jan Ellenberg
+
+Study PMC ID	# fill in if known
+
+Study DOI	# fill in if known
+
+# Study Contacts
+
+Study Person Last Name	Heriche
+
+Study Person First Name	Jean-Karim
+
+Study Person Email	heriche@embl.de
+
+Study Person Address	Cell Biology and Biophysics Unit, European Molecular Biology Laboratory, Meyerhofstrasse 1, 69117 Heidelberg, Germany
+
+Study Person Roles	submitter
+
+
+# Study License and Data DOI
+
+Study License	# leave blank
+
+Study License URL	# leave blank
+
+Study Data Publisher	# leave blank
+
+Study Data DOI	# leave blank
+
+
+Term Source Name	NCBITaxon	EFO	CMPO	FBbi
+
+Term Source URI	http://purl.obolibrary.org/obo/	http://www.ebi.ac.uk/efo/	http://www.ebi.ac.uk/cmpo/	http://purl.obolibrary.org/obo/
+
+
+# EXPERIMENT SECTION
+
+"# Experiment Section containing all information relative to each experiment in the study including materials used, protocols names and description, phenotype names and description. For multiple experiments this section should be repeated.  Copy and paste the whole section below and fill out for the next experiment"
+
+Experiment Number     1
+
+Comment[IDR Experiment Name]	# leave blank
+
+Experiment Description	Image data used to build the mitotic cell atlas. This consists of three subsets: raw images, segmentation masks for the landmarks and protein concentration maps.
+
+Experiment Size	5D Images: 75470 files	Average Image Dimension (XYZCT): raw: 256 x 256 x 31 x 3 x 1, conc: 256 x 256 x 31 x 1, masks: 256 x 256 x 31 x 2 x 1 # Dimensions are per file, 31 z-slices per channel, one file per time point, 40 time points, channels are protein of interest, chromatin, cell outline	Total Tb: 0.6 
+
+Experiment Example Images	"# if you have a favourite image from the screen, list it here.  We may use this image to highlight your screen"
+
+Experiment Imaging Method	confocal microscopy	   fluorescence correlation spectroscopy
+
+Experiment Imaging Method Term Source REF	Fbbi
+
+Experiment Imaging Method Term Accession	FBbi:00000251	n/a
+
+Experiment Comments	An additional file containing the FCS-derived intensity calibration parameters is included. Some proteins are identified by non-HGNC symbols.
+
+# assay files
+
+Experiment Assay File	# put in the name of the assay file
+
+Experiment Assay File Format	tab-delimited text
+
+Assay Experimental Conditions	"# if there were any experimental conditions some cells were grown under as part of the study enter the information here e.g. different environmental stress conditions, or mutant background compared to wild type."
+
+Assay Experimental Conditions Term Source REF	# leave blank
+
+Assay Experimental Conditions Term Accession	# leave blank
+
+Quality Control Description	# a brief description of the kind of quality control measures that were taken (if applicable)
+
+# Protocols
+
+Protocol Name	growth protocol	treatment protocol	image aquistion and feature extraction protocol	data analysis protocol
+
+Protocol Type	growth protocol	treatment protocol	image aquistion and feature extraction protocol	data analysis protocol
+
+Protocol Type Term Source REF	EFO	EFO
+
+Protocol Type Term Accession	EFO_0003789	EFO_0003969
+
+Protocol Description	HeLa Kyoto cells were cultured in high glucose Dulbecco's modified Eagle's medium supplemented with 10% (v/v) fetal bovine serum, 100 units/ml penicillin, 0.1 mg/ml streptomycin, 2 mM Glutamine and 1 mM (v/v) Sodium pyruvate at 37 °C and 5% CO2. Depending on the genetic modification, one or more of the following antibiotics were supplied to the culture at the stated final concentration: Geneticin 500 μg/ml, Hygromycin B 200 μg/ml or Puromycin 0.5 μg/ml. Once the cells reached 80-90% confluence, they were passaged and only a fraction of the cells were cultured in a fresh dish. All cells tested negative for mycoplasma contamination.	# text about any specific treatment to the cells here	Proteins of interests were expressed as GFP fusions from homozygously-edited genomic loci or in a few cases from a stably-integrated BAC. Confocal microscopy was performed on Zeiss LSM780, Confocor 3, laser scanning microscopes using 40x, NA 1.2 water DIC Plan-Apochromat objectives and the GaAsP detectors equipped with an incubation chamber. Time-lapse imaging was performed using the ZEN 2012 software combined with custom software. Mitotic cells were imaged live every 90 seconds for 60 minutes, taking 31 z-planes with a spatial resolution of 0.25 μm in x-y and 0.75 μm in z. At the end of acquisition, FCS measurements were performed at two positions in and four around the nucleus with a distance of 2 μm to the ellipse boundary for 30 seconds each.  	Each protein z-stack concentration map was processed using a bag-of-words model producing a vector of the fraction of the protein amount covered by each word.
+
+
+# Phenotypes
+
+Phenotype Name	# if any specific phenotypes were identified in the experiment enter the information here.  Each phenotype should be in a separate column.
+
+Phenotype Description	"# give a brief description of each phenotype, or how it was determined e.g. if score X is greater than Y then this phenotype assigned."
+
+Phenotype Score Type	"# choose from: manual, automatic"
+
+Phenotype Term Source REF	CMPO																																
+Phenotype Term Name	# if your phenotype matches a term in the Cellular Microscopy Phenotype Ontology enter it here http://www.ebi.ac.uk/CMPO
+
+Phenotype Term Accession	# if your phenotype matches a term in the Cellular Microscopy Phenotype Ontology enter the accession for the term here http://www.ebi.ac.uk/CMPO
+
+
+# Feature Level Data Files (give individual file details unless there is one file per well)
+
+Feature Level Data File Name	# list any feature level table files here
+
+Feature Level Data File Format	# a description of the table
+
+Feature Level Data File Description	# tab-delimited text or other format
+
+Feature Level Data Column Name	"# list all the columns in the table, each column in the table should be in a separate column here"
+
+Feature Level Data Column Description	# describe the values in each column
+
+
+#  Processed Data Files 																																	
+Processed Data File Name	cell_features.txt
+
+Processed Data File Format	tab-delimited text
+
+Processed Data Column Name	path	poi	fullname	time_1	time_2	index	foreground_1	foreground_2	f_1	f_2	f_3	f_4	f_5	f_6	f_7	f_8	f_9	f_10	f_11	f_12	f_13	f_14	f_15	f_16	f_17	f_18	f_19	f_20	f_21	f_22	f_23	f_24	f_25	f_26	f_27	f_28	f_29	f_30	f_31	f_32	f_33	f_34	f_35	f_36	f_37	f_38	f_39	f_40	f_41	f_42	f_43	f_44	f_45	f_46	f_47	f_48	f_49	f_50	f_51	f_52	f_53	f_54	f_55	f_56	f_57	f_58	f_59	f_60	f_61	f_62	f_63	f_64	f_65	f_66	f_67	f_68	f_69	f_70	f_71	f_72	f_73	f_74	f_75	f_76	f_77	f_78	f_79	f_80	f_81	f_82	f_83	f_84	f_85	f_86	f_87	f_88	f_89	f_90	f_91	f_92	f_93	f_94	f_95	f_96	f_97	f_98	f_99	f_100	f_101	f_102	POI_cell12_N	POI_cyt12_N	POI_nuc12_N	POI_cell12_nM	POI_cyt12_nM	POI_nuc12_nM	POI_cell12_I	Vol_cell12_um3	Vol_cyt12_um3	Vol_nuc12_um3
+
+Processed Data Column Type	
+
+Processed Data Column Annotation Level	Each row corresponds to one cell at one time point.
+
+Processed Data Column Description	path: Path to image file, uniquely identifies each cell		poi: Gene symbol	fullname: Protein name	time_1: Standard mitotic time in 15s units	time_2: Standard mitotic stage from 1 to 20	index: Row index	foreground_1: 3D foreground value	foreground_2: 2D foreground value	f_x: bag-of-words features, f_101 and f_102 are unused global features	POI_cell12_N: number of molecules in the whole cell	POI_cyt12_N: number of molecules in the cytoplasm	POI_nuc12_N: number of molecules in the nuclear region	POI_cell12_nM: protein concentration (in nM) in the whole cell	 POI_cyt12_nM" protein concemtration in the cytoplasm	POI_nuc12_nM: protein concentration in the nuclear region	POI_cell12_I: total intensity in the cell	Vol_cell12_um3: Cell volume (in cubic micrometers)	Vol_cyt12_um3: Volume of the cytoplasm	Vol_nuc12_um3: volume of the nuclear region
+
+Processed Data Column Link To Assay File	"# enter which column can be used to link the information in the processed data file to the assay file e.g. targeted protein, or gene identifier"
