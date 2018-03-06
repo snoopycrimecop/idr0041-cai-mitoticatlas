@@ -18,14 +18,20 @@ for assay in assays:
     for cell in cells:
         rawtifs = sorted([x for x in glob(cell + "/rawtif/*")
             if not x.endswith("Thumbs.db")])
+        conctifs = sorted([x for x in glob(cell + "/conctif/*")
+            if not x.endswith("Thumbs.db")])
         raw_pattern = join(cell, "rawtif",
             basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
         assert list(FilePattern(raw_pattern).filenames()) == rawtifs
+        conc_pattern = join(cell, "conctif",
+            basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
+        assert list(FilePattern(raw_pattern).filenames()) == conctifs
 
         pattern_dir = join(patterns_base, basename(assay), basename(cell))
         if not os.path.exists(pattern_dir):
             os.makedirs(pattern_dir)
-        pattern_file =  join(pattern_dir, "rawtif.pattern")
+        raw_pattern_file =  join(pattern_dir, "rawtif.pattern")
+        conc_pattern_file =  join(pattern_dir, "conctif.pattern")
         with open(pattern_file, 'w') as f:
             print "Writing %s" % pattern_file
             # f.write(raw_pattern)
