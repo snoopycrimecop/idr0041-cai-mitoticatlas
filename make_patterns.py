@@ -8,7 +8,8 @@ from pyidr.file_pattern import FilePattern
 TIMEPOINTS = 40
 
 base = "/uod/idr/filesets/idr0041-cai-mitoticatlas/"
-plates = "idr-metadata/idr0041-cai-mitoticatlas/patterns/"
+patterns = join(os.path.dirname(os.path.realpath(__file__)), "patterns")
+
 
 assays = [join(base, x) for x in os.listdir(base)]
 assays = filter(os.path.isdir, assays)
@@ -19,5 +20,9 @@ for assay in assays:
             if not x.endswith("Thumbs.db")])
         raw_pattern = join(cell, "rawtif",
             basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
-
         assert list(FilePattern(raw_pattern).filenames()) == rawtifs
+
+        pattern_file =  join(patterns, assay, cell, "rawtif.pattern")
+        with open(pattern_file, 'w') as f:
+            print "Writing %s" % pattern_file
+            # f.write(raw_pattern)
