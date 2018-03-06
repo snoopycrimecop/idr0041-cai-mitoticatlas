@@ -20,9 +20,7 @@ for assay in assays:
     for cell in cells:
         rawtifs = sorted([x for x in glob(cell + "/rawtif/*")
             if not x.endswith("Thumbs.db")])
-        assert len(rawtifs) == TIMEPOINTS, (
-            "Incorrect number of files on %s" % cell)
-        pattern = join(cell, "rawtif",
+        raw_pattern = join(cell, "rawtif",
             basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
 
-        assert list(FilePattern(pattern).filenames()) == rawtifs
+        assert list(FilePattern(raw_pattern).filenames()) == rawtifs
