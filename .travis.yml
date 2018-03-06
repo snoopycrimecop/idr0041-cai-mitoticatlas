@@ -21,6 +21,6 @@ before_script:
   - yamllint .
 
 script:
-  - find idr* -type f -name '*.screen' -print0 | xargs -0 -n1 python
-    idr-metadata-py/scripts/check_screen.py -v
+#  - find idr* -type f -name '*.screen' -print0 | xargs -0 -n1 python
+#    idr-metadata-py/scripts/check_screen.py -v
   - python idr-metadata-py/scripts/travis-check.py
