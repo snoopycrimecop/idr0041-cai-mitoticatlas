@@ -9,7 +9,7 @@ TIMEPOINTS = 40
 
 base = "/uod/idr/filesets/idr0041-cai-mitoticatlas/"
 patterns = join(os.path.dirname(os.path.realpath(__file__)), "patterns")
-
+print "Creating patterns from %s, saving under %s" % (base, patterns)
 
 assays = [join(base, x) for x in os.listdir(base)]
 assays = filter(os.path.isdir, assays)
