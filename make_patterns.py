@@ -14,9 +14,6 @@ assays = [join(base, x) for x in os.listdir(base)]
 assays = filter(os.path.isdir, assays)
 for assay in assays:
     cells = [x for x in glob(assay + "/*") if not x.endswith("Calibration")]
-    if not cells:
-        print "Empty directory: %s" % assay
-        continue
     for cell in cells:
         rawtifs = sorted([x for x in glob(cell + "/rawtif/*")
             if not x.endswith("Thumbs.db")])
