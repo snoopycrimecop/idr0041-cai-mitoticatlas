@@ -24,7 +24,7 @@ print "Creating patterns from %s, saving under %s" % (
     BASE_DIRECTORY, patterns_base)
 
 if os.path.exists(patterns_base):
-    shutil.rmtree(pattern_base)
+    shutil.rmtree(patterns_base)
 if os.path.exists(filepaths_file):
     os.remove(filepaths_file)
 
@@ -67,7 +67,7 @@ for assay in assays[:LIMIT]:
         with open(filepaths_file, 'w') as f:
             f.write("Dataset:name:%s\t../patterns/%s/%s/%s" % (
                 basename(assay), basename(assay), basename(cell),
-                "rawtif.pattern")
+                "rawtif.pattern"))
             f.write("Dataset:name:%s\t../patterns/%s/%s/%s" % (
                 basename(assay), basename(assay), basename(cell),
-                "conctif.pattern")
+                "conctif.pattern"))
