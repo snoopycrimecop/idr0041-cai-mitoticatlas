@@ -10,10 +10,11 @@ BASE_DIRECTORY = "/uod/idr/filesets/idr0041-cai-mitoticatlas/"
 
 # Determine base location for pattern files
 patterns_base = join(os.path.dirname(os.path.realpath(__file__)), "patterns")
-print "Creating patterns from %s, saving under %s" % (base, patterns_base)
+print "Creating patterns from %s, saving under %s" % (
+    BASE_DIRECTORY, patterns_base)
 
 # List all assay folders under base directory
-assays = [join(BASE_DIRECTORY, x) for x in os.listdir(base)]
+assays = [join(BASE_DIRECTORY, x) for x in os.listdir(BASE_DIRECTORY)]
 assays = filter(os.path.isdir, assays)
 for assay in assays:
     # Retrieve individual cell per assays excluding calibration folders
@@ -26,10 +27,12 @@ for assay in assays:
                            if not x.endswith("Thumbs.db")])
 
         # Construct and validate pattern strings
-        raw_pattern = join(cell, "rawtif",
+        raw_pattern = join(
+            cell, "rawtif",
             basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
         assert list(FilePattern(raw_pattern).filenames()) == rawtifs
-        conc_pattern = join(cell, "conctif",
+        conc_pattern = join(
+            cell, "conctif",
             basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
         assert list(FilePattern(conc_pattern).filenames()) == conctifs
 
