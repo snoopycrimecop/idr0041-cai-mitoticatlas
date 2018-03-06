@@ -34,6 +34,7 @@ for assay in assays:
         conc_pattern_file =  join(pattern_dir, "conctif.pattern")
         with open(raw_pattern_file, 'w') as f:
             print "Writing %s" % raw_pattern_file
-            # f.write(raw_pattern)
+            f.write(raw_pattern)
         with open(conc_pattern_file, 'w') as f:
             print "Writing %s" % conc_pattern_file
+            f.write(conc_pattern)
