@@ -4,15 +4,29 @@ from glob import glob
 import os
 from os.path import basename, join
 from pyidr.file_pattern import FilePattern
+import shutil
+import sys
 
 TIMEPOINTS = 40
 BASE_DIRECTORY = "/uod/idr/filesets/idr0041-cai-mitoticatlas/"
 LIMIT = 2
 
+if not os.path.exists(BASE_DIRECTORY):
+    print "Cannot find the raw data directory. Exiting."
+    sys.exit(0)
+
 # Determine base location for pattern files
-patterns_base = join(os.path.dirname(os.path.realpath(__file__)), "patterns")
+metadata_dir = os.path.dirname(os.path.realpath(__file__))
+patterns_base = join(metadata_dir, "patterns")
+filepaths_file = join(metadata_dir, "experimentA",
+                      "idr0041-experimentA-filePaths.tsv")
 print "Creating patterns from %s, saving under %s" % (
     BASE_DIRECTORY, patterns_base)
+
+if os.path.exists(patterns_base):
+    shutil.rmtree(pattern_base)
+if os.path.exists(filepaths_file):
+    os.remove(filepaths_file)
 
 # List all assay folders under base directory
 assays = [join(BASE_DIRECTORY, x) for x in os.listdir(BASE_DIRECTORY)]
@@ -39,13 +53,21 @@ for assay in assays[:LIMIT]:
 
         # Create pattern files on disk
         pattern_dir = join(patterns_base, basename(assay), basename(cell))
-        if not os.path.exists(pattern_dir):
-            os.makedirs(pattern_dir)
+        os.makedirs(pattern_dir)
         raw_pattern_file = join(pattern_dir, "rawtif.pattern")
         conc_pattern_file = join(pattern_dir, "conctif.pattern")
         with open(raw_pattern_file, 'w') as f:
             print "Writing %s" % raw_pattern_file
             f.write(raw_pattern)
+
         with open(conc_pattern_file, 'w') as f:
             print "Writing %s" % conc_pattern_file
             f.write(conc_pattern)
+
+        with open(filepaths_file, 'w') as f:
+            f.write("Dataset:name:%s\t../patterns/%s/%s/%s" % (
+                basename(assay), basename(assay), basename(cell),
+                "rawtif.pattern")
+            f.write("Dataset:name:%s\t../patterns/%s/%s/%s" % (
+                basename(assay), basename(assay), basename(cell),
+                "conctif.pattern")
