@@ -54,8 +54,8 @@ for assay in assays[:LIMIT]:
         # Create pattern files on disk
         pattern_dir = join(patterns_base, basename(assay), basename(cell))
         os.makedirs(pattern_dir)
-        raw_pattern_file = join(pattern_dir, "rawtif.pattern")
-        conc_pattern_file = join(pattern_dir, "conctif.pattern")
+        raw_pattern_file = join(pattern_dir, "rawtif.pattern\n")
+        conc_pattern_file = join(pattern_dir, "conctif.pattern\n")
         with open(raw_pattern_file, 'w') as f:
             print "Writing %s" % raw_pattern_file
             f.write(raw_pattern)
@@ -65,9 +65,9 @@ for assay in assays[:LIMIT]:
             f.write(conc_pattern)
 
         with open(filepaths_file, 'w') as f:
-            f.write("Dataset:name:%s\t../patterns/%s/%s/%s" % (
+            f.write("Dataset:name:%s\t../patterns/%s/%s/%s\n" % (
                 basename(assay), basename(assay), basename(cell),
                 "rawtif.pattern"))
-            f.write("Dataset:name:%s\t../patterns/%s/%s/%s" % (
+            f.write("Dataset:name:%s\t../patterns/%s/%s/%s\n" % (
                 basename(assay), basename(assay), basename(cell),
                 "conctif.pattern"))
