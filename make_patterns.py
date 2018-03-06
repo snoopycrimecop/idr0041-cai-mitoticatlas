@@ -18,10 +18,11 @@ for assay in assays:
         print "Empty directory: %s" % assay
         continue
     for cell in cells:
-        rawtifs = sorted(glob(cell + "/rawtif/*"))
+        rawtifs = sorted([x for x in glob(cell + "/rawtif/*")
+            if not x.endswith("Thumbs.db")])
         assert len(rawtifs) == TIMEPOINTS, (
             "Incorrect number of files on %s" % cell)
         pattern = join(cell, "rawtif",
             basename(rawtifs[0])[:-6] + "<01-%g>" % TIMEPOINTS + ".tif")
-        
+
         assert list(FilePattern(pattern).filenames()) == rawtifs
