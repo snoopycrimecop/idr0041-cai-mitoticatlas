@@ -67,7 +67,7 @@ for assay in assays[:LIMIT]:
         with open(filepaths_file, 'a') as f:
             f.write("Dataset:name:%s\t../patterns/%s/%s/%s\t%s\n" % (
                 basename(assay), basename(assay), basename(cell),
-                "rawtif.pattern","%s" % basename(cell)))
+                "rawtif.pattern", "%s" % basename(cell)))
             f.write("Dataset:name:%s\t../patterns/%s/%s/%s\t%s\n" % (
                 basename(assay), basename(assay), basename(cell),
                 "conctif.pattern", "%s concentration map" % basename(cell)))
