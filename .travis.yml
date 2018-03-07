@@ -1,26 +1,14 @@
 ---
 language: python
 
-python:
-  - "2.7"
+python: "2.7"
 
-# This (sudo: false) is needed to "run on container-based infrastructure" on
-# which cache: is available
-# http://docs.travis-ci.com/user/workers/container-based-infrastructure/
 sudo: false
 
 cache: pip
 
-install:
-  - pip install PyYAML "pandas<0.19" flake8 yamllint
-  - git clone git://github.com/sbesson/idr-metadata-py
-  - (cd idr-metadata-py && python setup.py install)
-
-before_script:
-  - flake8 -v .
-  - yamllint .
+install: pip install flake8 yamllint
 
 script:
-#  - find idr* -type f -name '*.screen' -print0 | xargs -0 -n1 python
-#    idr-metadata-py/scripts/check_screen.py -v
-  - python idr-metadata-py/scripts/travis-check.py
+  - flake8 -v .
+  - yamllint .

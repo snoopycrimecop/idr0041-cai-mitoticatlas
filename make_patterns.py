@@ -65,9 +65,9 @@ for assay in assays[:LIMIT]:
             f.write(conc_pattern + "\n")
 
         with open(filepaths_file, 'a') as f:
-            f.write("Dataset:name:%s\t../patterns/%s/%s/%s\n" % (
+            f.write("Dataset:name:%s\t../patterns/%s/%s/%s\t%s\n" % (
                 basename(assay), basename(assay), basename(cell),
-                "rawtif.pattern"))
-            f.write("Dataset:name:%s\t../patterns/%s/%s/%s\n" % (
+                basename(cell), "rawtif.pattern"))
+            f.write("Dataset:name:%s\t../patterns/%s/%s/%s\t%s\n" % (
                 basename(assay), basename(assay), basename(cell),
-                "conctif.pattern"))
+                basename(cell), "conctif.pattern"))
