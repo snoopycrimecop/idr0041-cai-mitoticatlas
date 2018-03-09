@@ -21,39 +21,40 @@ defaults:
 
 columns:
 
-  - name: Channels
-    clientname: Channels
-    include: yes
+    - name: Channels
+      clientname: Channels
+      include: yes
 
 ######################################################################
 # mapr groups
 ######################################################################
 
 
-  - group:
+    - group:
       namespace: openmicroscopy.org/mapr/cell_line
       columns:
-      - name: Characteristics [Cell Line]
-        clientname: Cell Line
-        include: yes
+          - name: Characteristics [Cell Line]
+            clientname: Cell Line
+            include: yes
 
-  - group:
+    - group:
       namespace: openmicroscopy.org/mapr/organism
       columns:
-      - name: Characteristics [Organism]
-        clientname: Organism
-        include: yes
+          - name: Characteristics [Organism]
+            clientname: Organism
+            include: yes
 
-  - group:
+    - group:
       namespace: openmicroscopy.org/mapr/gene
       columns:
-      - name: Comment [Gene Identifier]
-        clientname: Gene Identifier
-        include: yes
-      - name: Comment [Gene Identifier]
-        clientname: Gene Identifier URL
-        clientvalue: http://www.yeastgenome.org/locus/{{ value|urlencode }}/overview
-        include: yes
-      - name: Comment [Gene Symbol]
-        clientname: Gene Symbol
-        include: yes
+          - name: Comment [Gene Identifier]
+            clientname: Gene Identifier
+            include: yes
+          - name: Comment [Gene Identifier]
+            clientname: Gene Identifier URL
+            clientvalue: >
+                http://www.yeastgenome.org/locus/{{ value|urlencode }}/overview
+            include: yes
+          - name: Comment [Gene Symbol]
+            clientname: Gene Symbol
+            include: yes
