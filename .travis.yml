@@ -7,7 +7,7 @@ sudo: false
 
 cache: pip
 
-install: pip install flake8 yamllint
+install: pip install -r requirements.txt
 
 script:
   - flake8 -v .
