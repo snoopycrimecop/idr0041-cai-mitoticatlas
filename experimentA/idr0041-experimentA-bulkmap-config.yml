@@ -4,7 +4,7 @@ version: 1
 
 defaults:
     # Should the column be processed when creating bulk-annotations (yes/no)
-    include: no
+    include: "no"
     # Columns type of the bulk-annotations column
     type: string
 
@@ -12,22 +12,22 @@ defaults:
     # White space will be stripped
     split: ;
     # Should this column be included in the clients (yes/no)
-    includeclient: yes
+    includeclient: "yes"
     # Should this column be visible in the clients, if no the column should be
     # hidden in the client but will still be indexed by the searcher (yes/no)
-    visible: yes
+    visible: "yes"
     # Should empty values be omitted from the client display
-    omitempty: yes
+    omitempty: "yes"
 
 columns:
 
     - name: Channels
       clientname: Channels
-      include: yes
+      include: "yes"
 
-######################################################################
-# mapr groups
-######################################################################
+    ######################################################################
+    # mapr groups
+    ######################################################################
 
 
     - group:
@@ -35,26 +35,26 @@ columns:
       columns:
           - name: Characteristics [Cell Line]
             clientname: Cell Line
-            include: yes
+            include: "yes"
 
     - group:
       namespace: openmicroscopy.org/mapr/organism
       columns:
           - name: Characteristics [Organism]
             clientname: Organism
-            include: yes
+            include: "yes"
 
     - group:
       namespace: openmicroscopy.org/mapr/gene
       columns:
           - name: Comment [Gene Identifier]
             clientname: Gene Identifier
-            include: yes
+            include: "yes"
           - name: Comment [Gene Identifier]
             clientname: Gene Identifier URL
             clientvalue: >
                 http://www.yeastgenome.org/locus/{{ value|urlencode }}/overview
-            include: yes
+            include: "yes"
           - name: Comment [Gene Symbol]
             clientname: Gene Symbol
-            include: yes
+            include: "yes"
