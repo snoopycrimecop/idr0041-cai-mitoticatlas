@@ -23,5 +23,5 @@ cols.insert(0, cols.pop(cols.index('Dataset Name')))
 kif11 = kif11[cols]
 
 # Create annotation
-kif11.to_csv('experimentA/idr0041-experimentA-annotation.csv', sep=',',
+kif11.to_csv('../experimentA/idr0041-experimentA-annotation.csv', sep=',',
              index=False)
