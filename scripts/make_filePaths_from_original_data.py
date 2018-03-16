@@ -44,4 +44,4 @@ for assay in assays[:LIMIT]:
                     f.write("Dataset:name:%s\t%s\t%s\n" % (
                             basename(assay) + "_%s" % t,
                             tif,
-                            basename(tif)[:-4]))
+                            basename(cell) + basename(tif)[-10:-4]))
