@@ -9,6 +9,12 @@ import sys
 BASE_DIRECTORY = "/uod/idr/filesets/idr0041-cai-mitoticatlas/"
 LIMIT = 2
 
+IMAGE_TYPES = {
+    'raw': 'rawtif',
+    'mask': 'masktif',
+    'conc': 'conctif',
+}
+
 if not os.path.exists(BASE_DIRECTORY):
     print "Cannot find the raw data directory. Exiting."
     sys.exit(0)
@@ -29,26 +35,13 @@ for assay in assays[:LIMIT]:
     # Retrieve individual cell per assays excluding calibration folders
     cells = [x for x in glob(assay + "/*") if not x.endswith("Calibration")]
     for cell in cells:
-        # List raw and concatenated TIFF files
-        rawtifs = sorted([x for x in glob(cell + "/rawtif/*")
+        for t in IMAGE_TYPES:
+            tifs = sorted([x for x in glob(cell + "/%s/*" % IMAGE_TYPES[t])
                           if not x.endswith("Thumbs.db")])
-        masktifs = sorted([x for x in glob(cell + "/masktif/*")
-                          if not x.endswith("Thumbs.db")])
-        conctifs = sorted([x for x in glob(cell + "/conctif/*")
-                           if not x.endswith("Thumbs.db")])
 
-        with open(filepaths_file, 'a') as f:
-            for rawtif in rawtifs:
-                f.write("Dataset:name:%s\t%s\t%s\n" % (
-                    basename(assay) + "_raw", rawtif,
-                    basename(rawtif)[:-4]))
-
-            for masktif in masktifs:
-                f.write("Dataset:name:%s\t%s\t%s\n" % (
-                    basename(assay) + "_mask", masktif,
-                    basename(masktif)[:-4]))
-
-            for conctif in conctifs:
-                f.write("Dataset:name:%s\t%s\t%s\n" % (
-                    basename(assay) + "_conc", conctif,
-                    basename(conctif)[:-4]))
+            with open(filepaths_file, 'a') as f:
+                for tif in tifs:
+                    f.write("Dataset:name:%s\t%s\t%s\n" % (
+                            basename(assay) + "_%s" % t,
+                            tif,
+                            basename(tif)[:-4]))
