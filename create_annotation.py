@@ -12,9 +12,9 @@ df = pandas.read_csv('experimentA/idr0041-assays.txt', sep='\t')
 kif11 = df[df[IMAGEFILEPATH].str.contains('KIF11')]
 
 # Generate the dataset and image name columns
-kif11['Dataset Name'] = kif11[IMAGEFILEPATH].str.extract(CELL_PATTERN)
-kif11['Image Name'] = kif11['Image File'].str[:-4] + '_' + \
-     kif11[IMAGEFILEPATH].str.extract(TYPE_PATTERN)
+kif11['Dataset Name'] = kif11[IMAGEFILEPATH].str.extract(CELL_PATTERN) + \
+    '_' + kif11[IMAGEFILEPATH].str.extract(TYPE_PATTERN)
+kif11['Image Name'] = kif11['Image File'].str[:-4]
 
 # Reorder columns
 cols = kif11.columns.tolist()

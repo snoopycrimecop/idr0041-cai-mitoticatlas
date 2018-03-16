@@ -40,15 +40,15 @@ for assay in assays[:LIMIT]:
         with open(filepaths_file, 'a') as f:
             for rawtif in rawtifs:
                 f.write("Dataset:name:%s\t%s\t%s\n" % (
-                    basename(assay), rawtif,
-                    basename(rawtif)[:-4] + "_raw"))
+                    basename(assay) + "_raw", rawtif,
+                    basename(rawtif)[:-4]))
 
             for masktif in masktifs:
                 f.write("Dataset:name:%s\t%s\t%s\n" % (
-                    basename(assay), masktif,
-                    basename(masktif)[:-4] + "_mask"))
+                    basename(assay) + "_mask", masktif,
+                    basename(masktif)[:-4]))
 
             for conctif in conctifs:
                 f.write("Dataset:name:%s\t%s\t%s\n" % (
-                    basename(assay), conctif,
-                    basename(conctif)[:-4] + "_conc"))
+                    basename(assay) + "_conc", conctif,
+                    basename(conctif)[:-4]))
