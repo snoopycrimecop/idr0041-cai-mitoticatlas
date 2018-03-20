@@ -7,8 +7,9 @@ import os
 from os.path import basename, join
 import sys
 
-BASE_DIRECTORY = "/uod/idr/filesets/idr0041-cai-mitoticatlas/"
-LIMIT = 2
+BASE_DIRECTORY = os.environ.get(
+    "BASE_DIRECTORY", "/uod/idr/filesets/idr0041-cai-mitoticatlas/")
+LIMIT = os.environ.get("LIMIT", 2)
 
 IMAGE_TYPES = {
     'raw': 'rawtif',
