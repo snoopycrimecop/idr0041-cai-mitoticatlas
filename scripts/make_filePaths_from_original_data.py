@@ -11,15 +11,11 @@ import sys
 BASE_DIRECTORY = os.environ.get(
     "BASE_DIRECTORY", "/uod/idr/filesets/idr0041-cai-mitoticatlas/")
 
-if "START" in os.environ:
-    START = int(os.environ.get("START"))
-else:
-    START = 1
-
+START = int(os.environ.get("START"), 1)
 if "STOP" in os.environ:
     STOP = int(os.environ.get("STOP"))
 else:
-    STOP = 276
+    STOP = None
 
 IMAGE_TYPES = {
     'raw': 'rawtif',
