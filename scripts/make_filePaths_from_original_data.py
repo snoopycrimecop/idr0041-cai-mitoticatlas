@@ -11,7 +11,7 @@ import sys
 BASE_DIRECTORY = os.environ.get(
     "BASE_DIRECTORY", "/uod/idr/filesets/idr0041-cai-mitoticatlas/")
 
-START = int(os.environ.get("START"), 1)
+START = int(os.environ.get("START", 1))
 if "STOP" in os.environ:
     STOP = int(os.environ.get("STOP"))
 else:
