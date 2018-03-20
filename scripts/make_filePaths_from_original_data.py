@@ -9,7 +9,10 @@ import sys
 
 BASE_DIRECTORY = os.environ.get(
     "BASE_DIRECTORY", "/uod/idr/filesets/idr0041-cai-mitoticatlas/")
-LIMIT = int(os.environ.get("LIMIT", 2))
+if "LIMIT" in os.environ:
+    LIMIT = int(os.environ.get("LIMIT"))
+else:
+    LIMIT = None
 
 IMAGE_TYPES = {
     'raw': 'rawtif',
