@@ -2,7 +2,6 @@
 # Generate filePaths tsv file with raw files
 
 from glob import glob
-from itertools import islice
 import logging
 import os
 from os.path import basename, join
@@ -35,16 +34,21 @@ filepaths_file = join(metadata_dir, "..", "experimentA",
                       "idr0041-experimentA-filePaths.tsv")
 
 if os.path.exists(filepaths_file):
+    logging.info("Deleting %s" % filepaths_file)
     os.remove(filepaths_file)
-logging.info("Deleting %s" % filepaths_file)
+
 
 # List all assay folders under base directory
-assays = [join(BASE_DIRECTORY, x) for x in os.listdir(BASE_DIRECTORY)]
-assays = sorted(filter(os.path.isdir, assays))
+all_assays = [join(BASE_DIRECTORY, x) for x in os.listdir(BASE_DIRECTORY)]
+all_assays = sorted(filter(os.path.isdir, all_assays))
+logging.info("Found %g folders under %s" % (len(all_assays), BASE_DIRECTORY))
+
+
+assays = all_assays[START - 1:STOP]
 nfiles = 0
 nfolders = 0
-
-for assay in islice(assays, START - 1, STOP):
+logging.info("Generating %s for %g folders" % (filepaths_file, len(assays)))
+for assay in assays:
     logging.debug("Finding cells under %s" % assay)
     # Retrieve individual cell per assays excluding calibration folders
     cells = [x for x in glob(assay + "/*") if not x.endswith("Calibration")]
