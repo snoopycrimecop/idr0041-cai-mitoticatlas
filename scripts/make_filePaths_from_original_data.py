@@ -41,6 +41,9 @@ logging.info("Deleting %s" % filepaths_file)
 # List all assay folders under base directory
 assays = [join(BASE_DIRECTORY, x) for x in os.listdir(BASE_DIRECTORY)]
 assays = sorted(filter(os.path.isdir, assays))
+nfiles = 0
+nfolders = 0
+
 for assay in islice(assays, START - 1, STOP):
     logging.debug("Finding cells under %s" % assay)
     # Retrieve individual cell per assays excluding calibration folders
@@ -52,10 +55,14 @@ for assay in islice(assays, START - 1, STOP):
                           if not x.endswith("Thumbs.db")])
             logging.debug("Found %g original files under %s" % (
                          len(tifs), folder))
-
+            nfolders = nfolders + 1
             with open(filepaths_file, 'a') as f:
                 for tif in tifs:
                     f.write("Dataset:name:%s\t%s\t%s\n" % (
                             basename(assay) + "_%s" % t,
                             tif,
                             basename(cell) + basename(tif)[-10:-4]))
+                    nfiles = nfiles + 1
+
+logging.info("Listed %g files to import, located in %g folders" %
+             (nfiles, nfolders))
