@@ -17,7 +17,7 @@ IMAGE_TYPES = {
     'conc': 'conctif',
 }
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 if not os.path.exists(BASE_DIRECTORY):
     print "Cannot find the raw data directory. Exiting."
     sys.exit(0)
@@ -35,7 +35,7 @@ logging.info("Deleting %s" % filepaths_file)
 assays = [join(BASE_DIRECTORY, x) for x in os.listdir(BASE_DIRECTORY)]
 assays = sorted(filter(os.path.isdir, assays))
 for assay in assays[:LIMIT]:
-    logging.info("Finding cells under %s" % assay)
+    logging.debug("Finding cells under %s" % assay)
     # Retrieve individual cell per assays excluding calibration folders
     cells = [x for x in glob(assay + "/*") if not x.endswith("Calibration")]
     for cell in cells:
@@ -43,7 +43,7 @@ for assay in assays[:LIMIT]:
             folder = cell + "/%s/*" % IMAGE_TYPES[t]
             tifs = sorted([x for x in glob(folder)
                           if not x.endswith("Thumbs.db")])
-            logging.info("Found %g original files under %s" % (
+            logging.debug("Found %g original files under %s" % (
                          len(tifs), folder))
 
             with open(filepaths_file, 'a') as f:
