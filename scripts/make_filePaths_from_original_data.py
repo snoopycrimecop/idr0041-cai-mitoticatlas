@@ -2,6 +2,7 @@
 # Generate filePaths tsv file with raw files
 
 from glob import glob
+from itertools import islice
 import logging
 import os
 from os.path import basename, join
@@ -9,10 +10,16 @@ import sys
 
 BASE_DIRECTORY = os.environ.get(
     "BASE_DIRECTORY", "/uod/idr/filesets/idr0041-cai-mitoticatlas/")
-if "LIMIT" in os.environ:
-    LIMIT = int(os.environ.get("LIMIT"))
+
+if "START" in os.environ:
+    START = int(os.environ.get("START"))
 else:
-    LIMIT = None
+    START = 1
+
+if "STOP" in os.environ:
+    STOP = int(os.environ.get("STOP"))
+else:
+    STOP = 276
 
 IMAGE_TYPES = {
     'raw': 'rawtif',
@@ -37,7 +44,7 @@ logging.info("Deleting %s" % filepaths_file)
 # List all assay folders under base directory
 assays = [join(BASE_DIRECTORY, x) for x in os.listdir(BASE_DIRECTORY)]
 assays = sorted(filter(os.path.isdir, assays))
-for assay in assays[:LIMIT]:
+for assay in islice(assays, START - 1, STOP):
     logging.debug("Finding cells under %s" % assay)
     # Retrieve individual cell per assays excluding calibration folders
     cells = [x for x in glob(assay + "/*") if not x.endswith("Calibration")]
