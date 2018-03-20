@@ -16,6 +16,7 @@ if "STOP" in os.environ:
     STOP = int(os.environ.get("STOP"))
 else:
     STOP = None
+DEBUG = os.environ.get("DEBUG", logging.INFO)
 
 IMAGE_TYPES = {
     'raw': 'rawtif',
@@ -23,7 +24,7 @@ IMAGE_TYPES = {
     'conc': 'conctif',
 }
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=DEBUG)
 if not os.path.exists(BASE_DIRECTORY):
     print "Cannot find the raw data directory. Exiting."
     sys.exit(0)
