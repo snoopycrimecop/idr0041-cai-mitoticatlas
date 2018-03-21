@@ -37,12 +37,12 @@ df.loc[f, 'Image Name'] = \
 # Reorder columns to start with Dataset and Image names
 logging.debug("Generating dataset and image name columns")
 cols = df.columns.tolist()
-cols = cols[-1:] + cols[:-1]
+cols.insert(0, cols.pop(cols.index('Image Name')))
 cols.insert(0, cols.pop(cols.index('Dataset Name')))
 df = df[cols]
 
 # Create annotation
 csv_file = os.path.join(
-    scripts_dir, "..", "experimentA", "idr0041-annotation.csv")
+    scripts_dir, "..", "experimentA", "idr0041-experimentA-annotation.csv")
 logging.info("Generating %s" % csv_file)
 df.to_csv(csv_file, sep=',', index=False)
