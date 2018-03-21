@@ -5,11 +5,13 @@ import logging
 import os
 import os.path
 import warnings
-warnings.simplefilter(action='ignore', category=FutureWarning)
 import pandas
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 
 IMAGEFILEPATH = 'Comment [Image File Path]'
-CELL_PATTERN = '^mitotic_cell_atlas/(\w+)/.*$'
+ASSAYS_PATTERN = '^mitotic_cell_atlas/([\w-]+)/.*$'
+CELL_PATTERN = '^mitotic_cell_atlas/\w+/(\w+)/.*$'
 TYPE_PATTERN = '^.*/(\w+)tif$'
 DEBUG = int(os.environ.get("DEBUG", logging.INFO))
 
@@ -24,7 +26,7 @@ df = pandas.read_csv(assays_file, sep='\t')
 
 # Generate the dataset and image name columns
 logging.debug("Generating dataset and image name columns")
-df['Dataset Name'] = df[IMAGEFILEPATH].str.extract(CELL_PATTERN) + \
+df['Dataset Name'] = df[IMAGEFILEPATH].str.extract(ASSAYS_PATTERN) + \
     '_' + df[IMAGEFILEPATH].str.extract(TYPE_PATTERN)
 df['Image Name'] = df['Image File'].str[:-4]
 
