@@ -18,7 +18,7 @@ if "STOP" in os.environ:
     STOP = int(os.environ.get("STOP"))
 else:
     STOP = None
-DEBUG = os.environ.get("DEBUG", logging.INFO)
+DEBUG = int(os.environ.get("DEBUG", logging.INFO))
 IMAGE_TYPES = {
     'raw': 'rawtif',
     'mask': 'masktif',
