@@ -11,7 +11,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 IMAGEFILEPATH = 'Comment [Image File Path]'
 ASSAYS_PATTERN = '^mitotic_cell_atlas/([\w-]+)/.*$'
-CELL_PATTERN = '^mitotic_cell_atlas/\w+/(\w+)/.*$'
+CELL_PATTERN = '^mitotic_cell_atlas/[\w-]+/(\w+)/.*$'
 TYPE_PATTERN = '^.*/(\w+)tif$'
 DEBUG = int(os.environ.get("DEBUG", logging.INFO))
 
@@ -29,6 +29,10 @@ logging.debug("Generating dataset and image name columns")
 df['Dataset Name'] = df[IMAGEFILEPATH].str.extract(ASSAYS_PATTERN) + \
     '_' + df[IMAGEFILEPATH].str.extract(TYPE_PATTERN)
 df['Image Name'] = df['Image File'].str[:-4]
+f = df[IMAGEFILEPATH].str.contains('170428_MAD2L1gfpcM11')
+df.loc[f, 'Image Name'] = \
+    df.loc[f, IMAGEFILEPATH].str.extract(CELL_PATTERN)  + \
+    df.loc[f, 'Image File'].str[-10:-4]
 
 # Reorder columns to start with Dataset and Image names
 logging.debug("Generating dataset and image name columns")
