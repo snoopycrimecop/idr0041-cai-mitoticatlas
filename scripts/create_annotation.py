@@ -26,7 +26,7 @@ df = pandas.read_csv(assays_file, sep='\t')
 
 # Generate the dataset and image name columns
 logging.debug("Generating dataset and image name columns")
-df['Dataset Name'] = df[IMAGEFILEPATH].str.extract(ASSAYS_PATTERN) + \
+df['Dataset Name'] = df['Assay Name'] + \
     '_' + df[IMAGEFILEPATH].str.extract(TYPE_PATTERN)
 df['Image Name'] = df['Image File'].str[:-4]
 f = df[IMAGEFILEPATH].str.contains('170428_MAD2L1gfpcM11')
@@ -37,6 +37,9 @@ df.loc[f, 'Image Name'] = \
 # Reorder columns to start with Dataset and Image names
 logging.debug("Generating dataset and image name columns")
 cols = df.columns.tolist()
+cols.pop(cols.index('Assay Name'))
+cols.pop(cols.index('Image File'))
+cols.pop(cols.index('Comment [Image File Path]'))
 cols.insert(0, cols.pop(cols.index('Image Name')))
 cols.insert(0, cols.pop(cols.index('Dataset Name')))
 df = df[cols]
