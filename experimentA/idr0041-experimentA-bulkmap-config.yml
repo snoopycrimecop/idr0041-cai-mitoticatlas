@@ -24,6 +24,9 @@ columns:
   - name: Channels
     clientname: Channels
     include: yes
+  - name: Characteristics [Cell ID]
+    clientname: Cell ID
+    include: yes
 
   ######################################################################
   # mapr groups
@@ -57,4 +60,7 @@ columns:
           include: yes
         - name: Comment [Gene Symbol]
           clientname: Gene Symbol
+          include: yes
+        - name: Comment [Gene Annotation Comments]
+          clientname: Gene Annotation Comments
           include: yes
