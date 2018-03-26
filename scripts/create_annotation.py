@@ -23,7 +23,7 @@ assays_file = os.path.join(
     scripts_dir, "..", "experimentA", "idr0041-assays.txt")
 logging.info("Reading %s" % assays_file)
 df = pandas.read_csv(assays_file, sep='\t')
-df = df[df[IMAGEFILEPATH].str.contains('170428_MAD2L1gfpcM11')]
+#df = df[df[IMAGEFILEPATH].str.contains('170428_MAD2L1gfpcM11')]
 
 # Generate the dataset and image name columns
 logging.debug("Generating dataset and image name columns")
