@@ -32,8 +32,9 @@ Study Person Roles	submitter
 
 
 # Study License and Data DOI
-Study License	# leave blank
-Study License URL	# leave blank
+Study License CC-BY 4.0
+Study License URL   https://creativecommons.org/licenses/by/4.0/
+Study Copyright Cai et al
 Study Data Publisher	# leave blank
 Study Data DOI	# leave blank
 
