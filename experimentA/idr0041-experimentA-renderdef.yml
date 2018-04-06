@@ -1,0 +1,14 @@
+---
+# all 3 channel colors changed from original 1.red -> green,
+# 2. green -> red, 3. red -> red
+
+channels:
+  1:
+    # green
+    color: "00FF00"
+  2:
+    # red
+    color: "FF0000"
+  3:
+    # red
+    color: "FF0000"
