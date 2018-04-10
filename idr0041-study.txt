@@ -6,12 +6,12 @@
 Comment[IDR Study Accession]	idr0041
 Study Title	An experimental and computational framework to build a dynamic protein atlas of human cell division
 Study Type	Quantitative protein localization using FCS-calibrated 3D time-lapse imaging
-Study Type Term Source REF	# leave blank
-Study Type Term Accession	# leave blank
+Study Type Term Source REF
+Study Type Term Accession
 Study Description	Using the cell and nuclear boundaries as landmarks, we generated a 4D image data-driven, canonical model of a human mitotic cell. This model is used to integrate the dynamic distribution of 3D concentration data for many mitotic proteins imaged by calibrated fluorescence microscopy in a large number of dividing cells. Analysis of the data allows to automatically identify sub-cellular structures and quantify the timing and magnitude of protein fluxes between structures, as well as predicting dynamic multi-molecular biological processes such as organelle assembly and disassembly. The integrated experimental and computational method enables building a 4D protein atlas of the dividing human cell.
 Study Organism	 Homo sapiens
 Study Organism Term Source REF	NCBITaxon
-Study Organism Term Accession	# leave blank
+Study Organism Term Accession	NCBITaxon_9606
 Study Experiments Number	1
 Study External URL	http://www.mitocheck.org/mitotic_cell_atlas
 Study Public Release Date
@@ -58,10 +58,10 @@ Experiment Comments	An additional file containing the FCS-derived intensity cali
 # assay files
 Experiment Assay File	idr0041-assays.txt
 Experiment Assay File Format	tab-delimited text
-Assay Experimental Conditions	"# if there were any experimental conditions some cells were grown under as part of the study enter the information here e.g. different environmental stress conditions, or mutant background compared to wild type."
-Assay Experimental Conditions Term Source REF	# leave blank
-Assay Experimental Conditions Term Accession	# leave blank
-Quality Control Description	# a brief description of the kind of quality control measures that were taken (if applicable)
+Assay Experimental Conditions
+Assay Experimental Conditions Term Source REF
+Assay Experimental Conditions Term Accession
+Quality Control Description
 
 # Protocols
 Protocol Name	growth protocol	treatment protocol	image aquistion and feature extraction protocol	data analysis protocol
@@ -72,20 +72,20 @@ Protocol Description	HeLa Kyoto cells were cultured in high glucose Dulbecco's m
 
 
 # Phenotypes
-Phenotype Name	# if any specific phenotypes were identified in the experiment enter the information here.  Each phenotype should be in a separate column.
-Phenotype Description	"# give a brief description of each phenotype, or how it was determined e.g. if score X is greater than Y then this phenotype assigned."
-Phenotype Score Type	"# choose from: manual, automatic"
+Phenotype Name
+Phenotype Description
+Phenotype Score Type
 Phenotype Term Source REF	CMPO
-Phenotype Term Name	# if your phenotype matches a term in the Cellular Microscopy Phenotype Ontology enter it here http://www.ebi.ac.uk/CMPO
-Phenotype Term Accession	# if your phenotype matches a term in the Cellular Microscopy Phenotype Ontology enter the accession for the term here http://www.ebi.ac.uk/CMPO
+Phenotype Term Name
+Phenotype Term Accession
 
 
 # Feature Level Data Files (give individual file details unless there is one file per well)
-Feature Level Data File Name	# list any feature level table files here
-Feature Level Data File Format	# a description of the table
-Feature Level Data File Description	# tab-delimited text or other format
-Feature Level Data Column Name	"# list all the columns in the table, each column in the table should be in a separate column here"
-Feature Level Data Column Description	# describe the values in each column
+Feature Level Data File Name
+Feature Level Data File Format
+Feature Level Data File Description
+Feature Level Data Column Name
+Feature Level Data Column Description
 
 #  Processed Data Files
 Processed Data File Name	cell_features.txt
@@ -95,4 +95,4 @@ Processed Data Column Name	path	poi	fullname	time_1	time_2	index	foreground_1	fo
 Processed Data Column Type	
 Processed Data Column Annotation Level	Each row corresponds to one cell at one time point.
 Processed Data Column Description	path: Path to image file, uniquely identifies each cell		poi: Gene symbol	fullname: Protein name	time_1: Standard mitotic time in 15s units	time_2: Standard mitotic stage from 1 to 20	index: Row index	foreground_1: 3D foreground value	foreground_2: 2D foreground value	f_x: bag-of-words features, f_101 and f_102 are unused global features	POI_cell12_N: number of molecules in the whole cell	POI_cyt12_N: number of molecules in the cytoplasm	POI_nuc12_N: number of molecules in the nuclear region	POI_cell12_nM: protein concentration (in nM) in the whole cell	 POI_cyt12_nM" protein concemtration in the cytoplasm	POI_nuc12_nM: protein concentration in the nuclear region	POI_cell12_I: total intensity in the cell	Vol_cell12_um3: Cell volume (in cubic micrometers)	Vol_cyt12_um3: Volume of the cytoplasm	Vol_nuc12_um3: volume of the nuclear region
-Processed Data Column Link To Assay File	"# enter which column can be used to link the information in the processed data file to the assay file e.g. targeted protein, or gene identifier"
+Processed Data Column Link To Assay File
