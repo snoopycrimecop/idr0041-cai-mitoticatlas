@@ -32,9 +32,9 @@ Study Person Roles	submitter
 
 
 # Study License and Data DOI
-Study License CC-BY 4.0
-Study License URL   https://creativecommons.org/licenses/by/4.0/
-Study Copyright Cai et al
+Study License	CC-BY 4.0
+Study License URL	https://creativecommons.org/licenses/by/4.0/
+Study Copyright	Cai et al
 Study Data Publisher	University of Dundee
 Study Data DOI	http://dx.doi.org/10.17867/10000112
 
@@ -45,7 +45,7 @@ Term Source URI	http://purl.obolibrary.org/obo/	http://www.ebi.ac.uk/efo/	http:/
 # EXPERIMENT SECTION
 "# Experiment Section containing all information relative to each experiment in the study including materials used, protocols names and description, phenotype names and description. For multiple experiments this section should be repeated.  Copy and paste the whole section below and fill out for the next experiment"
 
-Experiment Number     1
+Experiment Number	1
 Comment[IDR Experiment Name]	idr0041-cai-mitoticatlas/experimentA
 Experiment Description	Image data used to build the mitotic cell atlas. This consists of three subsets: raw images, segmentation masks for the landmarks and protein concentration maps.
 Experiment Size	Datasets:276 5D Images: 75470 files	Average Image Dimension (XYZCT): raw: 256 x 256 x 31 x 3 x 1, conc: 256 x 256 x 31 x 1, masks: 256 x 256 x 31 x 2 x 1 # Dimensions are per file, 31 z-slices per channel, one file per time point, 40 time points, channels are protein of interest, chromatin, cell outline	Total Tb: 0.6
