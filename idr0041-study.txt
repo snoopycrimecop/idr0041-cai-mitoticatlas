@@ -49,7 +49,7 @@ Experiment Number	1
 Comment[IDR Experiment Name]	idr0041-cai-mitoticatlas/experimentA
 Experiment Description	Image data used to build the mitotic cell atlas. This consists of three subsets: raw images, segmentation masks for the landmarks and protein concentration maps.
 Experiment Size	Datasets:276 5D Images: 75470 files	Average Image Dimension (XYZCT): raw: 256 x 256 x 31 x 3 x 1, conc: 256 x 256 x 31 x 1, masks: 256 x 256 x 31 x 2 x 1 # Dimensions are per file, 31 z-slices per channel, one file per time point, 40 time points, channels are protein of interest, chromatin, cell outline	Total Tb: 0.6
-Experiment Example Images	"# if you have a favourite image from the screen, list it here.  We may use this image to highlight your screen"
+Experiment Example Images	https://idr.openmicroscopy.org/webclient/?show=image-3452472	https://idr.openmicroscopy.org/webclient/img_detail/3452472/
 Experiment Imaging Method	confocal microscopy	fluorescence correlation spectroscopy
 Experiment Imaging Method Term Source REF	FBbi
 Experiment Imaging Method Term Accession	FBbi:00000251
