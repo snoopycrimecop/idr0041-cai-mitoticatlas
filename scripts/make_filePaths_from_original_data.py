@@ -24,7 +24,8 @@ IMAGE_TYPES = {
     'mask': 'masktif',
     'conc': 'conctif',
 }
-CORRECTION_DIRECTORY = "/nfs/bioimage/drop/idr0041-cai-mitoticatlas/20180710-ftp"
+CORRECTION_DIRECTORY = \
+    "/nfs/bioimage/drop/idr0041-cai-mitoticatlas/20180710-ftp"
 
 # Initialize logging and perform minimal directory sanity check
 logging.basicConfig(level=DEBUG)
@@ -51,6 +52,7 @@ logging.info("Found %g correction folders under %s" % (len(correction_folders),
 
 # Loop over subset of assay folders delimited by START and STOP
 files = []
+ncorrections = 0
 folders = original_folders[START - 1:STOP]
 logging.info("Generating %s for %g folders" % (filepaths_file, len(folders)))
 for folder in folders:
@@ -78,6 +80,7 @@ for folder in folders:
                                  assay, basename(cell)))
                 elif len(corrected_tifs) == len(tifs):
                     tifs = corrected_tifs
+                    ncorrections += len(corrected_tifs)
                 else:
                     logging.warn("Mismatching image count for (%s, %s)" % (
                                  assay, basename(cell)))
@@ -86,7 +89,8 @@ for folder in folders:
                 imagename = basename(cell) + basename(tif)[-10:-4]
                 files.append((assay, tif, imagename))
 
-logging.info("Listed %g files to import" % len(files))
+logging.info("Listed %g files to import including %g corrected files" %
+             (len(files), ncorrections))
 
 with open(filepaths_file, 'w') as f:
     for i in files:
