@@ -24,6 +24,7 @@ IMAGE_TYPES = {
     'mask': 'masktif',
     'conc': 'conctif',
 }
+CORRECTION_DIRECTORY = "/nfs/bioimage/drop/idr0041-cai-mitoticatlas/20180710-ftp"
 
 # Initialize logging and perform minimal directory sanity check
 logging.basicConfig(level=DEBUG)
@@ -36,12 +37,17 @@ metadata_dir = os.path.dirname(os.path.realpath(__file__))
 filepaths_file = join(metadata_dir, "..", "experimentA",
                       "idr0041-experimentA-filePaths.tsv")
 
-# List all assay folders found under base directory
+# List all original folders found under base directory
 original_folders = [join(BASE_DIRECTORY, x) for x in
                     os.listdir(BASE_DIRECTORY)]
 original_folders = sorted(filter(os.path.isdir, original_folders))
 logging.info("Found %g folders under %s" % (len(original_folders),
              BASE_DIRECTORY))
+
+# List all correction folders
+correction_folders = [x for x in os.listdir(CORRECTION_DIRECTORY)]
+logging.info("Found %g correction folders under %s" % (len(correction_folders),
+             CORRECTION_DIRECTORY))
 
 # Loop over subset of assay folders delimited by START and STOP
 files = []
@@ -53,13 +59,20 @@ for folder in folders:
     cells = [x for x in glob(folder + "/*") if not x.endswith("Calibration")]
     for cell in cells:
         for t in IMAGE_TYPES:
-            subfolder = cell + "/%s/*" % IMAGE_TYPES[t]
-            tifs = sorted([x for x in glob(subfolder)
-                          if not x.endswith("Thumbs.db")])
-            logging.debug("Found %g original files under %s" % (
-                         len(tifs), subfolder))
-
             assay = basename(folder) + "_%s" % t
+
+            if assay in correction_folders:
+                logging.debug("%s:%s using images from corrected folder",
+                              assay, basename(cell))
+                subfolder = "%s/%s/%s*" % (
+                    CORRECTION_DIRECTORY, assay, basename(cell))
+            else:
+                subfolder = cell + "/%s/*" % IMAGE_TYPES[t]
+            tifs = sorted([x for x in glob(subfolder)
+                           if not x.endswith("Thumbs.db")])
+            logging.debug("Found %g original files under %s" % (
+                          len(tifs), subfolder))
+
             for tif in tifs:
                 imagename = basename(cell) + basename(tif)[-10:-4]
                 files.append((assay, tif, imagename))
