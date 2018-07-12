@@ -61,17 +61,26 @@ for folder in folders:
         for t in IMAGE_TYPES:
             assay = basename(folder) + "_%s" % t
 
-            if assay in correction_folders:
-                logging.debug("%s:%s using images from corrected folder",
-                              assay, basename(cell))
-                subfolder = "%s/%s/%s*" % (
-                    CORRECTION_DIRECTORY, assay, basename(cell))
-            else:
-                subfolder = cell + "/%s/*" % IMAGE_TYPES[t]
+            # Find original files
+            subfolder = cell + "/%s/*" % IMAGE_TYPES[t]
             tifs = sorted([x for x in glob(subfolder)
                            if not x.endswith("Thumbs.db")])
             logging.debug("Found %g original files under %s" % (
                           len(tifs), subfolder))
+
+            if assay in correction_folders:
+                logging.debug("Using images from corrected folder")
+                subfolder = "%s/%s/%s_T*" % (
+                    CORRECTION_DIRECTORY, assay, basename(cell))
+                corrected_tifs = sorted([x for x in glob(subfolder)])
+                if not corrected_tifs:
+                    logging.warn("No corrected image found for (%s, %s)" % (
+                                 assay, basename(cell)))
+                elif len(corrected_tifs) == len(tifs):
+                    tifs = corrected_tifs
+                else:
+                    logging.warn("Mismatching image count for (%s, %s)" % (
+                                 assay, basename(cell)))
 
             for tif in tifs:
                 imagename = basename(cell) + basename(tif)[-10:-4]
