@@ -24,8 +24,7 @@ IMAGE_TYPES = {
     'mask': 'masktif',
     'conc': 'conctif',
 }
-CORRECTION_DIRECTORY = \
-    "/nfs/bioimage/drop/idr0041-cai-mitoticatlas/20180710-ftp"
+CORRECTION_DIRECTORIES = '201807*-ftp'
 
 # Initialize logging and perform minimal directory sanity check
 logging.basicConfig(level=DEBUG)
@@ -45,10 +44,11 @@ original_folders = sorted(filter(os.path.isdir, original_folders))
 logging.info("Found %g folders under %s" % (len(original_folders),
              BASE_DIRECTORY))
 
-# List all correction folders
-correction_folders = [x for x in os.listdir(CORRECTION_DIRECTORY)]
+# List all v1.0.1 correction folders
+correction_folders = [
+    x for x in glob(join(BASE_DIRECTORY, CORRECTION_DIRECTORIES, "*"))]
 logging.info("Found %g correction folders under %s" % (len(correction_folders),
-             CORRECTION_DIRECTORY))
+             CORRECTION_DIRECTORIES))
 
 # Loop over subset of assay folders delimited by START and STOP
 files = []
@@ -70,17 +70,23 @@ for folder in folders:
             logging.debug("Found %g original files under %s" % (
                           len(tifs), subfolder))
 
-            if assay in correction_folders:
-                logging.debug("Using images from corrected folder")
-                subfolder = "%s/%s/%s_T*" % (
-                    CORRECTION_DIRECTORY, assay, basename(cell))
+            # Find corrected file
+            for correction_folder in correction_folders:
+                if not correction_folder.endswith(assay):
+                    continue
+
+                logging.debug("Looking for images in corrected folder")
+                subfolder = "%s/%s_T*" % (correction_folder, basename(cell))
                 corrected_tifs = sorted([x for x in glob(subfolder)])
+
                 if not corrected_tifs:
                     logging.warn("No corrected image found for (%s, %s)" % (
                                  assay, basename(cell)))
                 elif len(corrected_tifs) == len(tifs):
+                    logging.debug("Using images from corrected folder")
                     tifs = corrected_tifs
                     ncorrections += len(corrected_tifs)
+                    break
                 else:
                     logging.warn("Mismatching image count for (%s, %s)" % (
                                  assay, basename(cell)))
@@ -95,3 +101,4 @@ logging.info("Listed %g files to import including %g corrected files" %
 with open(filepaths_file, 'w') as f:
     for i in files:
         f.write("Dataset:name:%s\t%s\t%s\n" % (i[0], i[1], i[2]))
+    logging.info("Generated %s" % filepaths_file)
