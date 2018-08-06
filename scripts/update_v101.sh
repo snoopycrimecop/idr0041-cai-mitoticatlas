@@ -33,7 +33,24 @@ for dataset in $datasets; do
     $omero delete Dataset/Image:$datasetId --report
 done
 
-# Re-import the images
+# Generate list of import commands
+tmpBulk=experimentA/tmp.yml
+cp experimentA/idr0041-experimentA-bulk.yml experimentA/tmp.yml
+echo 'dry_run: "true"' >> experimentA/tmp.yml
+$omero import --bulk experimentA/tmp.yml | grep 201807.*ftp > commands.txt
+rm experimentA/tmp.yml
+
+# Re-import the updated images
+import_image() {
+  options=${1//\"/}
+  $omero import $options
+}
+export -f import_image
+parallel -a commands.txt --jobs 5 --results rslt --joblog log import_image
+rm commands.txt
 
 # Reannotate the project
 #omero metadata populate --batch 100 --wait 2000 --context bulkmap --cfg experimentA/idr0041-experimentA-bulkmap-config.yml Project:404 --report
+
+# Log out
+$omero logout
