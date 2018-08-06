@@ -16,7 +16,11 @@ $omero metadata populate --batch 100 --wait 2000 --context deletemap --cfg exper
 # Delete top-level bulk annotation
 fId=$($omero hql --ids-only --limit 1 --style plain "select l.child.id from ProjectAnnotationLink l where l.parent.id=$projectId" | cut -d ',' -f2)
 
-$omero delete FileAnnotation:$fId --report --dry-run
+if [[ -z $fId ]]; then
+    echo "No top-level annotation found"
+else
+    $omero delete FileAnnotation:$fId --report
+fi
 
 # Delete outdated concentration maps
 datasets=$(grep 201807.*ftp experimentA/idr0041-experimentA-filePaths.tsv | awk -F ' ' '{print $1}' | awk -F 'Dataset:name:' '{print $2}' | uniq)
@@ -26,7 +30,7 @@ for dataset in $datasets; do
     echo " Deleting images of dataset $datasetId"
     
     # Delete images under dataset
-    $omero delete Dataset/Image:$datasetId --report --dry-run
+    $omero delete Dataset/Image:$datasetId --report
 done
 
 # Re-import the images
