@@ -50,7 +50,8 @@ parallel -a commands.txt --jobs 5 --results rslt --joblog log import_image
 rm commands.txt
 
 # Reannotate the project
-#omero metadata populate --batch 100 --wait 2000 --context bulkmap --cfg experimentA/idr0041-experimentA-bulkmap-config.yml Project:404 --report
+$omero metadata populate --report --batch 1000 --file experimentA/idr0041-experimentA-annotation.csv Project:$projectId
+$omero metadata populate --report --batch 100 --wait 2000 --context bulkmap --cfg experimentA/idr0041-experimentA-bulkmap-config.yml Project:$projectId
 
 # Log out
 $omero logout
