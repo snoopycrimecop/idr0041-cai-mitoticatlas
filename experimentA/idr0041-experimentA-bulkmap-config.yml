@@ -70,11 +70,11 @@ advanced:
   primary_group_keys:
     - namespace: openmicroscopy.org/mapr/organism
       keys:
-      - Organism
+        - Organism
     - namespace: openmicroscopy.org/mapr/cell_line
       keys:
-      - Cell Line
+        - Cell Line
     - namespace: openmicroscopy.org/mapr/gene
       keys:
-      - Gene Identifier
-      - Gene Symbol
+        - Gene Identifier
+        - Gene Symbol
