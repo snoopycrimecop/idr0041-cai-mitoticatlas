@@ -4,7 +4,7 @@
 "# Section with generic information about the study including title, description, publication details (if applicable) and contact details"
 
 Comment[IDR Study Accession]	idr0041
-Study Title	Experimental and computational framework to build a dynamic protein atlas of human cell division
+Study Title	Experimental and computational framework for a dynamic protein atlas of human cell division
 Study Type	Quantitative protein localization using FCS-calibrated 3D time-lapse imaging
 Study Type Term Source REF
 Study Type Term Accession
