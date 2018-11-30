@@ -1,4 +1,4 @@
-## An experimental and computational framework to build a dynamic protein atlas of human cell division
+## Experimental and computational framework for a dynamic protein atlas of human cell division
 
 ### Authors
 

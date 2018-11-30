@@ -4,7 +4,7 @@
 "# Section with generic information about the study including title, description, publication details (if applicable) and contact details"
 
 Comment[IDR Study Accession]	idr0041
-Study Title	An experimental and computational framework to build a dynamic protein atlas of human cell division
+Study Title	Experimental and computational framework to build a dynamic protein atlas of human cell division
 Study Type	Quantitative protein localization using FCS-calibrated 3D time-lapse imaging
 Study Type Term Source REF
 Study Type Term Accession
@@ -17,11 +17,11 @@ Study External URL	http://www.mitocheck.org/mitotic_cell_atlas
 Study Public Release Date
 
 # Study Publication
-Study PubMed ID
-Study Publication Title	An experimental and computational framework to build a dynamic protein atlas of human cell division
+Study PubMed ID	30202089
+Study Publication Title	Experimental and computational framework for a dynamic protein atlas of human cell division
 Study Author List	Yin Cai, M. Julius Hossain, Jean-Karim Hériché, Antonio Z. Politi, Nike Walther, Birgit Koch, Malte Wachsmuth, Bianca Nijmeijer, Moritz Kueblbeck, Marina Martinic Kavur, Rene Ladurner, Jan-Michael Peters & Jan Ellenberg
 Study PMC ID
-Study DOI
+Study DOI	https://doi.org/10.1038/s41586-018-0518-z
 
 # Study Contacts
 Study Person Last Name	Heriche
