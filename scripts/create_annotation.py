@@ -10,9 +10,9 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
 IMAGEFILEPATH = 'Comment [Image File Path]'
-ASSAYS_PATTERN = '^mitotic_cell_atlas/([\w-]+)/.*$'
-CELL_PATTERN = '^mitotic_cell_atlas/[\w-]+/(\w+)/.*$'
-TYPE_PATTERN = '^.*/(\w+)tif$'
+ASSAYS_PATTERN = r'^mitotic_cell_atlas/([\w-]+)/.*$'
+CELL_PATTERN = r'^mitotic_cell_atlas/[\w-]+/(\w+)/.*$'
+TYPE_PATTERN = r'^.*/(\w+)tif$'
 DEBUG = int(os.environ.get("DEBUG", logging.INFO))
 
 logging.basicConfig(level=DEBUG)
