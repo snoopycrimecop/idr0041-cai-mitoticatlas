@@ -5,9 +5,9 @@
 
 Comment[IDR Study Accession]	idr0041
 Study Title	Experimental and computational framework for a dynamic protein atlas of human cell division
-Study Type	Quantitative protein localization using FCS-calibrated 3D time-lapse imaging
-Study Type Term Source REF	
-Study Type Term Accession	
+Study Type  protein localization
+Study Type Term Source REF  EFO	
+Study Type Term Accession GO:0008104
 Study Description	Using the cell and nuclear boundaries as landmarks, we generated a 4D image data-driven, canonical model of a human mitotic cell. This model is used to integrate the dynamic distribution of 3D concentration data for many mitotic proteins imaged by calibrated fluorescence microscopy in a large number of dividing cells. Analysis of the data allows to automatically identify sub-cellular structures and quantify the timing and magnitude of protein fluxes between structures, as well as predicting dynamic multi-molecular biological processes such as organelle assembly and disassembly. The integrated experimental and computational method enables building a 4D protein atlas of the dividing human cell.
 Study Organism	Homo sapiens
 Study Organism Term Source REF	NCBITaxon
@@ -47,6 +47,7 @@ Term Source URI	http://purl.obolibrary.org/obo/	http://www.ebi.ac.uk/efo/	http:/
 
 Experiment Number	1
 Comment[IDR Experiment Name]	idr0041-cai-mitoticatlas/experimentA
+Experiment Sample Type  cell
 Experiment Description	Image data used to build the mitotic cell atlas. This consists of three subsets: raw images, segmentation masks for the landmarks and protein concentration maps.
 Experiment Size	Datasets:276 5D Images: 75470 files	Average Image Dimension (XYZCT): raw: 256 x 256 x 31 x 3 x 1, conc: 256 x 256 x 31 x 1, masks: 256 x 256 x 31 x 2 x 1 # Dimensions are per file, 31 z-slices per channel, one file per time point, 40 time points, channels are protein of interest, chromatin, cell outline	Total Tb: 0.6
 Experiment Example Images	https://idr.openmicroscopy.org/webclient/?show=image-3452472	https://idr.openmicroscopy.org/webclient/img_detail/3452472/
