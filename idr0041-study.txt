@@ -14,7 +14,7 @@ Study Organism Term Source REF	NCBITaxon
 Study Organism Term Accession	NCBITaxon_9606
 Study Experiments Number	1
 Study External URL	http://www.mitocheck.org/mitotic_cell_atlas
-Study Public Release Date 2018-04-12
+Study Public Release Date	2018-04-12
 
 # Study Publication
 Study PubMed ID	30202089
