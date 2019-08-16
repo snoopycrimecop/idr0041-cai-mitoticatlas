@@ -18,9 +18,9 @@ Study Public Release Date	2018-04-12
 
 # Study Publication
 Study PubMed ID	30202089
-Study Publication Title	Experimental and computational framework for a dynamic protein atlas of human cell division
-Study Author List	Yin Cai, M. Julius Hossain, Jean-Karim Hériché, Antonio Z. Politi, Nike Walther, Birgit Koch, Malte Wachsmuth, Bianca Nijmeijer, Moritz Kueblbeck, Marina Martinic Kavur, Rene Ladurner, Jan-Michael Peters & Jan Ellenberg
-Study PMC ID	
+Study Publication Title	Experimental and computational framework for a dynamic protein atlas of human cell division.
+Study Author List	Cai Y, Hossain MJ, Hériché JK, Politi AZ, Walther N, Koch B, Wachsmuth M, Nijmeijer B, Kueblbeck M, Martinic-Kavur M, Ladurner R, Alexander S, Peters JM, Ellenberg J
+Study PMC ID	PMC6556381
 Study DOI	https://doi.org/10.1038/s41586-018-0518-z
 
 # Study Contacts
